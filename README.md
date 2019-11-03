@@ -2,7 +2,7 @@
 ---
 ## usage
 
-select a picture that you want to make it's coner become round
+### select a picture that you want to make it's coner become round
 ---
 ## screenshot
 
