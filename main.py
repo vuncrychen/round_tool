@@ -2,6 +2,17 @@ import tkinter as tk
 from tkinter.filedialog import askopenfilename
 from tkinter import messagebox
 from tkinter import filedialog
+from selenium import webdriver
+import sys
+import os
+import shutil
+
+def createFolder(directory):
+    try:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+    except OSError:
+        print ('Error: Creating directory. ' +  directory)
 
 class MessageWindow(tk.Toplevel):
     def __init__(self, title, message):
@@ -26,10 +37,11 @@ windows.geometry("500x500")
 s = tk.Label(windows, text = "FILE", font = ("arial", 20), heigh = 8)
 messagebox.showinfo("menu", "welcome to the round_tool\n\nresult will be in the same folder with this python file")
 
-
+click = 0
 filename = " "
 def choose():
     global filename
+    global click
     filename = filedialog.askopenfilename(filetype = (("jpeg files","*.jpg"),("all files","*.*")))
     # print("123" + filename + "456")
     # print(type(filename))
@@ -39,9 +51,27 @@ def choose():
     else:
         # messagebox.showinfo("warring", "you didn't selected anything")
         messagebox.showinfo("selected", filename)
+        click += 1
 
+SaveAs = " "
 def gogo():
-    print("gogo")
+    global SaveAs
+    global filename
+    global click
+    if click == 1:
+        createFolder('./temp/')
+        SaveDirectory = os.getcwd()
+        SaveAs = os.path.join(SaveDirectory, 'temp')
+        # print(SaveAs)
+        shutil.copy(filename, SaveAs)
+        print("gogo")
+
+        # browser = webdriver.Chrome()
+        # # browser.set_window_position(-3000, 0)
+        # browser.get("http://www.roundpic.com/")
+
+        shutil.rmtree(SaveAs)
+    # print(click)
 
 def exit_windows():
     MessageWindow("Quit", "Are you sure you want to quit?")
