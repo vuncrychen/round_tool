@@ -14,13 +14,18 @@ def createFolder(directory):
     except OSError:
         print ('Error: Creating directory. ' +  directory)
 
+COLOR = "orange"
 windows = tk.Tk()
+windows.config(bg=COLOR)
 
 windows.title("round_tool")
 windows.geometry("900x600")
 
-select = tk.Label(windows, text = "選擇要圓角的圖片", font = ("arial", 20), heigh = 8)
+select = tk.Label(windows, text = "選擇要圓角的圖片", bg=COLOR, font = ("arial", 20), heigh = 8)
 messagebox.showinfo("歡迎", "圓角結果路徑將與瀏覽器下載路徑相同\n\n處理過程約20秒\n\n(取決於您的網速度及電腦效能)")
+
+def quit(self):
+    self.root.destroy()
 
 click = 0
 filename = ""
@@ -59,11 +64,16 @@ def gogo():
     else:
         messagebox.showerror("錯誤", "請先選擇檔案")
 
+def close():
+    windows.quit()
+
 pick = tk.Button(windows, text = '選擇', font = ('Arial', 15), width = 10, height = 1, command = choose)
 action = tk.Button(windows, text = '開始', font = ('Arial', 15), width = 10, height = 1, command = gogo)
+leave = tk.Button(windows, text = '離開', font = ('Arial', 15), width = 10, height = 1, command = close)
 
 select.pack()
 pick.pack()
 action.pack()
+leave.pack()
 
 windows.mainloop()
