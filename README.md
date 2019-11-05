@@ -1,5 +1,5 @@
 # round_tool
-### 程式使用到以下程式庫
+### 使用以下程式庫
 1. selenium
 2. tkinter
 3. shutil
