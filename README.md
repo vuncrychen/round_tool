@@ -15,11 +15,11 @@
 ![Alt text](pic/2.png)![Alt text](pic/4.png)![Alt text](pic/3.png)
 # 範例
 ## 原圖
-![Alt text](pic/pizza-o.jpg)
-## 圓角後
-![Alt text](pic/pizza.jpg)
----
-## 原圖
 ![Alt text](pic/cookie-o.jpg)
 ## 圓角後
 ![Alt text](pic/cookie.jpg)
+---
+## 原圖
+![Alt text](pic/pizza-o.jpg)
+## 圓角後
+![Alt text](pic/pizza.jpg)
