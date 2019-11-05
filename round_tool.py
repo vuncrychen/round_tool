@@ -14,15 +14,18 @@ def createFolder(directory):
     except OSError:
         print ('Error: Creating directory. ' +  directory)
 
+round_pic_name = ""
 COLOR = "orange"
 windows = tk.Tk()
 windows.config(bg=COLOR)
 
 windows.title("round_tool")
-windows.geometry("900x600")
+windows.geometry("900x600+300+70")
 
-select = tk.Label(windows, text = "選擇要圓角的圖片", bg=COLOR, font = ("arial", 20), heigh = 8)
-messagebox.showinfo("歡迎", "圓角結果路徑將與瀏覽器下載路徑相同\n\n處理過程約20秒\n\n(取決於您的網速度及電腦效能)")
+name_result = tk.Label(windows, text = "輸入圓角後的檔名", bg=COLOR, font = ("arial", 20), heigh = 6)
+select = tk.Label(windows, text = "選擇要圓角的圖片", bg=COLOR, font = ("arial", 20), heigh = 5)
+result = tk.Entry(windows, show=None, font=('Arial', 14))
+tab = tk.Label(windows, text = " ", bg=COLOR, font = ("arial", 20), heigh = 1)
 
 def quit(self):
     self.root.destroy()
@@ -41,9 +44,13 @@ def choose():
 
 SaveAs = ""
 def gogo():
+    global round_pic_name
     global SaveAs
     global filename
     global click
+    round_pic_name = result.get()
+    if round_pic_name == "":
+        round_pic_name = "noname"
     if click == 1:
         createFolder('./temp/')
         SaveDirectory = os.getcwd()
@@ -55,8 +62,11 @@ def gogo():
         browser.get("http://www.roundpic.com/")
         browser.find_element_by_name("file").send_keys(filename)
         browser.find_element_by_xpath("//button[text()='Round it!']").click()
+        result_name = browser.find_element_by_id("name")
+        result_name.clear()
+        result_name.send_keys(round_pic_name)
         browser.find_element_by_xpath('//input[@type="button"]').click()
-        time.sleep(10)
+        time.sleep(5)
         browser.close()
 
         messagebox.showinfo("完成", "已完成圓角")
@@ -73,6 +83,9 @@ leave = tk.Button(windows, text = '離開', font = ('Arial', 15), width = 10, he
 
 select.pack()
 pick.pack()
+name_result.pack()
+result.pack()
+tab.pack()
 action.pack()
 leave.pack()
 
