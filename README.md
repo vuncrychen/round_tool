@@ -12,7 +12,13 @@
 ![Alt text](pic/1.png)
 ---
 ![Alt text](pic/2.png)
-# 範例 (原圖, 圓角後)
-![Alt text](pic/pizza-o.jpg)![Alt text](pic/pizza.jpg)
+# 範例
+## 原圖
+![Alt text](pic/pizza-o.jpg)
+## 圓角後
+![Alt text](pic/pizza.jpg)
 ---
-![Alt text](pic/cookie-o.jpg)![Alt text](pic/cookie.jpg)
+## 原圖
+![Alt text](pic/cookie-o.jpg)
+## 圓角後
+![Alt text](pic/cookie.jpg)
