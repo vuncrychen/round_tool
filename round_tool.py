@@ -14,6 +14,18 @@ def createFolder(directory):
     except OSError:
         print ('Error: Creating directory. ' +  directory)
 
+def get_download_path():
+    """Returns the default downloads path for linux or windows"""
+    if os.name == 'nt':
+        import winreg
+        sub_key = r'SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders'
+        downloads_guid = '{374DE290-123F-4565-9164-39C4925E467B}'
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, sub_key) as key:
+            location = winreg.QueryValueEx(key, downloads_guid)[0]
+        return location
+    else:
+        return os.path.join(os.path.expanduser('~'), 'downloads')
+
 round_pic_name = ""
 COLOR = "orange"
 windows = tk.Tk()
@@ -53,6 +65,7 @@ def gogo():
         round_pic_name = "noname"
     if click == 1:
         createFolder('./temp/')
+        createFolder('./rounded/')
         SaveDirectory = os.getcwd()
         SaveAs = os.path.join(SaveDirectory, 'temp')
         shutil.copy(filename, SaveAs)
@@ -68,6 +81,11 @@ def gogo():
         browser.find_element_by_xpath('//input[@type="button"]').click()
         time.sleep(5)
         browser.close()
+
+        SaveAs_2 = os.path.join(SaveDirectory, 'rounded')
+        path = get_download_path()
+        shutil.copy(path + "\\" + round_pic_name + ".jpg", SaveAs_2)
+        os.remove(path + "\\" + round_pic_name + ".jpg")
 
         messagebox.showinfo("完成", "已完成圓角")
         shutil.rmtree(SaveAs)
