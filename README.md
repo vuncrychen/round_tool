@@ -11,7 +11,7 @@
 # 螢幕截圖
 ![Alt text](pic/1.png)
 ---
-![Alt text](pic/2.png)![Alt text](pic/4.png)![Alt text](pic/3.png)
+![Alt text](pic/2.png)![Alt text](pic/3.png)![Alt text](pic/4.png)
 # 範例
 ## 原圖
 ![Alt text](pic/pizza-o.jpg)
